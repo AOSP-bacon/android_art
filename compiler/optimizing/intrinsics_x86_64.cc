@@ -539,7 +539,7 @@ static void CreateSSE41FPToFPLocations(ArenaAllocator* arena,
 
   // We have to fall back to a call to the intrinsic.
   LocationSummary* locations = new (arena) LocationSummary(invoke,
-                                                           LocationSummary::kCall);
+                                                           LocationSummary::kCallOnMainOnly);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetFpuRegisterAt(0)));
   locations->SetOut(Location::FpuRegisterLocation(XMM0));
@@ -601,7 +601,7 @@ static void CreateSSE41FPToIntLocations(ArenaAllocator* arena,
 
   // We have to fall back to a call to the intrinsic.
   LocationSummary* locations = new (arena) LocationSummary(invoke,
-                                                           LocationSummary::kCall);
+                                                           LocationSummary::kCallOnMainOnly);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetFpuRegisterAt(0)));
   locations->SetOut(Location::RegisterLocation(RAX));
@@ -712,7 +712,7 @@ void IntrinsicCodeGeneratorX86_64::VisitMathRoundDouble(HInvoke* invoke) {
 static void CreateFPToFPCallLocations(ArenaAllocator* arena,
                                       HInvoke* invoke) {
   LocationSummary* locations = new (arena) LocationSummary(invoke,
-                                                           LocationSummary::kCall,
+                                                           LocationSummary::kCallOnMainOnly,
                                                            kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::FpuRegisterLocation(calling_convention.GetFpuRegisterAt(0)));
@@ -852,7 +852,7 @@ void IntrinsicCodeGeneratorX86_64::VisitMathTanh(HInvoke* invoke) {
 static void CreateFPFPToFPCallLocations(ArenaAllocator* arena,
                                         HInvoke* invoke) {
   LocationSummary* locations = new (arena) LocationSummary(invoke,
-                                                           LocationSummary::kCall,
+                                                           LocationSummary::kCallOnMainOnly,
                                                            kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::FpuRegisterLocation(calling_convention.GetFpuRegisterAt(0)));
@@ -1358,7 +1358,7 @@ void IntrinsicCodeGeneratorX86_64::VisitSystemArrayCopy(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderX86_64::VisitStringCompareTo(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1631,7 +1631,7 @@ void IntrinsicCodeGeneratorX86_64::VisitStringIndexOfAfter(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderX86_64::VisitStringNewStringFromBytes(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1660,7 +1660,7 @@ void IntrinsicCodeGeneratorX86_64::VisitStringNewStringFromBytes(HInvoke* invoke
 
 void IntrinsicLocationsBuilderX86_64::VisitStringNewStringFromChars(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1686,7 +1686,7 @@ void IntrinsicCodeGeneratorX86_64::VisitStringNewStringFromChars(HInvoke* invoke
 
 void IntrinsicLocationsBuilderX86_64::VisitStringNewStringFromString(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));

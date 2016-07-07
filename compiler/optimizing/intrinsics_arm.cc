@@ -1262,7 +1262,7 @@ static void GenerateVisitStringIndexOf(HInvoke* invoke,
 
 void IntrinsicLocationsBuilderARM::VisitStringIndexOf(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   // We have a hand-crafted assembly stub that follows the runtime calling convention. So it's
   // best to align the inputs accordingly.
@@ -1282,7 +1282,7 @@ void IntrinsicCodeGeneratorARM::VisitStringIndexOf(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderARM::VisitStringIndexOfAfter(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   // We have a hand-crafted assembly stub that follows the runtime calling convention. So it's
   // best to align the inputs accordingly.
@@ -1303,7 +1303,7 @@ void IntrinsicCodeGeneratorARM::VisitStringIndexOfAfter(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderARM::VisitStringNewStringFromBytes(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1333,7 +1333,7 @@ void IntrinsicCodeGeneratorARM::VisitStringNewStringFromBytes(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderARM::VisitStringNewStringFromChars(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1360,7 +1360,7 @@ void IntrinsicCodeGeneratorARM::VisitStringNewStringFromChars(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderARM::VisitStringNewStringFromString(HInvoke* invoke) {
   LocationSummary* locations = new (arena_) LocationSummary(invoke,
-                                                            LocationSummary::kCall,
+                                                            LocationSummary::kCallOnMainOnly,
                                                             kIntrinsified);
   InvokeRuntimeCallingConvention calling_convention;
   locations->SetInAt(0, Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
@@ -1716,7 +1716,7 @@ static void CreateFPToFPCallLocations(ArenaAllocator* arena, HInvoke* invoke) {
   DCHECK_EQ(invoke->GetType(), Primitive::kPrimDouble);
 
   LocationSummary* const locations = new (arena) LocationSummary(invoke,
-                                                                 LocationSummary::kCall,
+                                                                 LocationSummary::kCallOnMainOnly,
                                                                  kIntrinsified);
   const InvokeRuntimeCallingConvention calling_convention;
 
@@ -1743,7 +1743,7 @@ static void CreateFPFPToFPCallLocations(ArenaAllocator* arena, HInvoke* invoke) 
   DCHECK_EQ(invoke->GetType(), Primitive::kPrimDouble);
 
   LocationSummary* const locations = new (arena) LocationSummary(invoke,
-                                                                 LocationSummary::kCall,
+                                                                 LocationSummary::kCallOnMainOnly,
                                                                  kIntrinsified);
   const InvokeRuntimeCallingConvention calling_convention;
 
